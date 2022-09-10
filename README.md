@@ -1,5 +1,13 @@
 # Password Protection Lab
 
+top level
+before_action :authorize, only: [:show]
+
+under private
+def authorize
+return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :user_id
+end
+
 ## Learning Goals
 
 - Implement login and signup with a password
